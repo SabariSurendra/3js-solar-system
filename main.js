@@ -1,20 +1,6 @@
-import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.162.0/three.module.js";
+import * as THREE from "three";
 import { OrbitControls } from "./js/OrbitControls.js";
 import getStarfield from "./js/getStars.js"
-// import sunTexture from "./images/sun_texture.jpg"
-// import mercuryTexture from "./images/mercury_texture.jpg"
-// import venusTexture from "./images/venus_texture.jpg"
-// import marsTexture from "./images/mars_texture.jpg"
-// import earthTextture1 from "./images/00_earthmap1k.jpg"
-// import earthLightTexture from "./images/03_earthlights1k.jpg"
-// import earthCloudsTexture from "./images/04_earthcloudmap.jpg"
-// import earthCloudsTransTexture from "./images/05_earthcloudmaptrans.jpg"
-// import moonTexture from "./images/moon_texture.jpg"
-// import jupiterTexture from "./images/jupiter_texture.jpg"
-// import jupiterRingTexture from "./images/planetary_ring_texture.jpg"
-// import saturnTexture from "./images/saturn_texture.jpg"
-// import uranusTexture from "./images/uranus_texture.jpg"
-// import neptuneTexture from "./images/neptune_texture.jpg"
 
 const info = {
   sun: {
