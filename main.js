@@ -1,20 +1,20 @@
 import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.162.0/three.module.js";
 import { OrbitControls } from "./js/OrbitControls.js";
 import getStarfield from "./js/getStars.js"
-import sunTexture from "/images/sun_texture.jpg"
-import mercuryTexture from "/images/mercury_texture.jpg"
-import venusTexture from "/images/venus_texture.jpg"
-import marsTexture from "/images/mars_texture.jpg"
-import earthTextture1 from "/images/00_earthmap1k.jpg"
-import earthLightTexture from "/images/03_earthlights1k.jpg"
-import earthCloudsTexture from "/images/04_earthcloudmap.jpg"
-import earthCloudsTransTexture from "/images/05_earthcloudmaptrans.jpg"
-import moonTexture from "/images/moon_texture.jpg"
-import jupiterTexture from "/images/jupiter_texture.jpg"
-import jupiterRingTexture from "/images/planetary_ring_texture.jpg"
-import saturnTexture from "/images/saturn_texture.jpg"
-import uranusTexture from "/images/uranus_texture.jpg"
-import neptuneTexture from "/images/neptune_texture.jpg"
+// import sunTexture from "./images/sun_texture.jpg"
+// import mercuryTexture from "./images/mercury_texture.jpg"
+// import venusTexture from "./images/venus_texture.jpg"
+// import marsTexture from "./images/mars_texture.jpg"
+// import earthTextture1 from "./images/00_earthmap1k.jpg"
+// import earthLightTexture from "./images/03_earthlights1k.jpg"
+// import earthCloudsTexture from "./images/04_earthcloudmap.jpg"
+// import earthCloudsTransTexture from "./images/05_earthcloudmaptrans.jpg"
+// import moonTexture from "./images/moon_texture.jpg"
+// import jupiterTexture from "./images/jupiter_texture.jpg"
+// import jupiterRingTexture from "./images/planetary_ring_texture.jpg"
+// import saturnTexture from "./images/saturn_texture.jpg"
+// import uranusTexture from "./images/uranus_texture.jpg"
+// import neptuneTexture from "./images/neptune_texture.jpg"
 
 const info = {
   sun: {
@@ -153,7 +153,7 @@ const loader = new THREE.TextureLoader();
 // Sun 
 const sphereGeo = new THREE.SphereGeometry(3, 64, 64);
 const sunMaterial = new THREE.MeshBasicMaterial({
-  map: loader.load(sunTexture),
+  map: loader.load("./images/sun_texture.jpg"),
   // blending: THREE.AdditiveBlending,
 });
 sphereGeo.center();
@@ -175,26 +175,26 @@ parent.add(earthGroup);
 // Earth 
 const earthGeo = new THREE.IcosahedronGeometry(1, 12);
 const earthMesh = new THREE.MeshStandardMaterial({
-  map: loader.load(earthTextture1),
+  map: loader.load("./images/00_earthmap1k.jpg"),
   // blending: THREE.AdditiveBlending
 });
 const earth = new THREE.Mesh(earthGeo, earthMesh);
 // earth.position.set(5, 0, 10);
 earthGroup.add(earth);
 const lightMaterial = new THREE.MeshBasicMaterial({
-  map: loader.load(earthLightTexture),
+  map: loader.load("./images/03_earthlights1k.jpg"),
   blending: THREE.AdditiveBlending,
 })
 const lightMesh = new THREE.Mesh(earthGeo, lightMaterial);
 earthGroup.add(lightMesh);
 const cloudsMaterial = new THREE.MeshBasicMaterial({
-  map: loader.load(earthCloudsTexture),
+  map: loader.load("./images/04_earthcloudmap.jpg"),
   roughness: 1,
   metalness: 0,
   transparent: true,
   opacity: 0.5,
   blending: THREE.AdditiveBlending,
-  alphaMap: loader.load(earthCloudsTransTexture),
+  alphaMap: loader.load("./images/05_earthcloudmaptrans.jpg"),
 })
 const cloudsMesh = new THREE.Mesh(earthGeo, cloudsMaterial);
 cloudsMesh.scale.setScalar(1.005);
@@ -204,37 +204,37 @@ earthGroup.add(cloudsMesh);
 // const cloudsMaterial = new THREE.mes
 
 // Moon 
-const moon = createPlanet(moonTexture, 0.1, 1, 1, 0);
+const moon = createPlanet("./images/moon_texture.jpg", 0.1, 1, 1, 0);
 moon.name = "moon";
 earthGroup.add(moon);
 // 
 
 // Mercury 
-const mercury = createPlanet(mercuryTexture, 0.2, -2, -0.2, -10);
+const mercury = createPlanet("./images/mercury_texture.jpg", 0.2, -2, -0.2, -10);
 mercury.name = "mercury";
 parent.add(mercury);
 // 
 
 // Venus 
-const venus = createPlanet(venusTexture, 0.4, -5, 0.5, 20);
+const venus = createPlanet("./images/venus_texture.jpg", 0.4, -5, 0.5, 20);
 venus.name = "venus";
 parent.add(venus);
 // 
 
 // Mars
-const mars = createPlanet(marsTexture, 0.3, 2, 0.8, 40);
+const mars = createPlanet("./images/mars_texture.jpg", 0.3, 2, 0.8, 40);
 mars.name = "mars";
 parent.add(mars);
 // 
 
 // Jupiter
-const jupiter = createPlanet(jupiterTexture, 2, 3, -1, -50);
+const jupiter = createPlanet("./images/jupiter_texture.jpg", 2, 3, -1, -50);
 jupiter.name = "jupiter";
 const jupiterRingGeo = new THREE.RingGeometry(5, 4.5, 30, 1, 0, 6.28);
 const jupiterRingMaterial = new THREE.MeshBasicMaterial({
   color: 0xffffff,
   // blending: THREE.AdditiveBlending,
-  map: loader.load(jupiterRingTexture),
+  map: loader.load("./images/planetary_ring_texture.jpg"),
   // opacity: 0.3,
   // transparent: true,
   side: THREE.DoubleSide
@@ -248,7 +248,7 @@ parent.add(jupiter);
 // 
 
 // Saturn
-const saturn = createPlanet(saturnTexture, 1.7, 3, 0.9, 60);
+const saturn = createPlanet("./images/saturn_texture.jpg", 1.7, 3, 0.9, 60);
 saturn.name = "saturn";
 function createSaturnRing(innerRad, opacity, scale) {
   const saturnRingGeo = new THREE.RingGeometry(innerRad, 4.5, 30, 1, 0, 6.28);
@@ -275,13 +275,13 @@ parent.add(saturn);
 // 
 
 // Uranus
-const uranus = createPlanet(uranusTexture, 1.3, 3, -1, -70);
+const uranus = createPlanet("./images/uranus_texture.jpg", 1.3, 3, -1, -70);
 uranus.name = "uranus";
 parent.add(uranus);
 // 
 
 // Neptune 
-const neptune = createPlanet(neptuneTexture, 1.3, 3, 1.2, 80);
+const neptune = createPlanet("./images/neptune_texture.jpg", 1.3, 3, 1.2, 80);
 neptune.name = "neptune";
 parent.add(neptune);
 // 
