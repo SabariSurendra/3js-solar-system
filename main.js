@@ -1,5 +1,5 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import * as THREE from "https://cdnjs.cloudflare.com/ajax/libs/three.js/0.162.0/three.module.js";
+import { OrbitControls } from "./js/OrbitControls.js";
 import getStarfield from "./js/getStars.js"
 import sunTexture from "/assets/images/sun_texture.jpg"
 import mercuryTexture from "/assets/images/mercury_texture.jpg"
