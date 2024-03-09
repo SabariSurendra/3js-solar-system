@@ -355,7 +355,7 @@ function onClick(event) {
   raycaster.setFromCamera(mouse, camera);
 
   // Find intersecting objects
-  const intersects = raycaster.intersectObjects(scene.children);
+  const intersects = raycaster.intersectObjects(scene.children, true);
 
   // Check if any objects were clicked
   if (intersects.length > 0) {
@@ -374,7 +374,7 @@ document.getElementById("close").addEventListener("click", () => {
   document.getElementsByClassName("info")[0].classList.add("closed");
 });
 // Add event listener for mouse click
-document.addEventListener('click', onClick, false);
+canvas.addEventListener('click', onClick, false);
 
 function infoContainer(name) {
   var planetName = document.querySelector(".info h2");
