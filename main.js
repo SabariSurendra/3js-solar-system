@@ -430,6 +430,12 @@ function onClick(event) {
 document.getElementById("close").addEventListener("click", () => {
   document.getElementsByClassName("info")[0].classList.add("closed");
 });
+document.addEventListener("keydown", (e) => {
+  if (e.key.toLocaleLowerCase() == "escape" && !document.getElementsByClassName("info")[0].classList.contains("closed")) {
+    document.getElementsByClassName("info")[0].classList.add("closed");
+    console.log(`${e.key} Pressed!`);
+  }
+})
 // Add event listener for mouse click
 canvas.addEventListener('click', onClick, false);
 
@@ -439,7 +445,8 @@ function infoContainer(name) {
   planetName.innerHTML = name.replaceAll("_", " ");
   pointsContainer.innerHTML = "";
   document.getElementsByClassName("info")[0].classList.remove("closed");
-  info[name].info.split(/(?<!\d)\.(?!\d)/g).map((point) => {
+  // info[name].info.split(/(?<!\d)\.(?!\d)/g).map((point) => {
+  info[name].info.split(/\n/g).map((point) => {
     if (point.trim() != "") {
       var li = document.createElement("li");
       li.textContent = point;
