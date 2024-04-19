@@ -363,7 +363,7 @@ scene.add(createPlanetaryRing(5.03));
 
 // Stars
 const stars = getStarfield({ numStars: 3000 });
-// scene.add(stars);
+scene.add(stars);
 //
 
 // camera.position.copy(initialPosition);
