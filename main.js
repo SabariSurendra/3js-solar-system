@@ -171,14 +171,16 @@ const gridHelper = new THREE.GridHelper(30);
 
 
 // Light 
-const hemiSphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff)
-hemiSphereLight.position.set(0, 5, 0)
+const hemiSphereLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.4)
+hemiSphereLight.position.set(0, 0, 0)
 // hemiSphereLight.castShadow = true
 hemiSphereLight.rotateX(180)
 scene.add(hemiSphereLight);
 const hemiSphereLightHelper = new THREE.HemisphereLightHelper(hemiSphereLight)
 hemiSphereLightHelper.position.set(0, 0, 0)
-scene.add(hemiSphereLightHelper)
+// scene.add(hemiSphereLightHelper)
+const pointLight = new THREE.PointLight(0xffffff, 1, 200);
+scene.add(pointLight);
 
 // const sunLight = new THREE.DirectionalLight(0xffffff,1);
 // sunLight.position.set(0, 0, 0)
@@ -246,7 +248,13 @@ earthGroup.add(cloudsMesh);
 // const cloudsMaterial = new THREE.mes
 
 // Moon 
-const moon = createPlanet("./images/moon_texture.jpg", 0.1, 1, 1, 0);
+// const moon = createPlanet("./images/moon_texture.jpg", 0.1, 1, 1, 0);
+const planetMaterial = new THREE.MeshBasicMaterial({
+  map: loader.load("./images/moon_texture.jpg"),
+})
+const moon = new THREE.Mesh(sphereGeo, planetMaterial);
+moon.scale.setScalar(0.1);
+moon.position.set(1, 1, 0);
 moon.name = "moon";
 earthGroup.add(moon);
 // 
@@ -355,7 +363,7 @@ scene.add(createPlanetaryRing(5.03));
 
 // Stars
 const stars = getStarfield({ numStars: 3000 });
-scene.add(stars);
+// scene.add(stars);
 //
 
 // camera.position.copy(initialPosition);
